@@ -53,6 +53,12 @@ int main(){
 				random_for_fullswing = rand() % 100;
 				if (random_for_fullswing < 30) out++;
 				else if (random_for_fullswing >= 30 && random_for_fullswing < 65) {
+					if (first_base == 1)
+						second_base++;
+					if (second_base == 1)
+						third_base++;
+					if (third_base == 1)
+						score++;
 					first_base++;
 					printf("1루타입니다\n");
 					strike_reset();
