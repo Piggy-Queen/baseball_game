@@ -2,30 +2,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+int strike, ball;
 
 void strike_reset(){
-	int strike, ball;
 	strike = 0;
 	ball = 0;
 }
 
-void base_count(int first_base, int second_base, int third_base, int score){
-	while (first_base > 1) {
-		first_base--; 
-		second_base++; 
-	}
-	while (second_base > 1) { 
-		second_base--; 
-		third_base++; 
-	}
-	while (third_base > 1) {
-		third_base--; 
-		score++; 
-	}
-}
-
 int main(){
-	int ball, strike, out, score;
+	int out, score;
 	int first_base, second_base, third_base;
 	int hit;
 	ball = 0; 
@@ -65,17 +50,40 @@ int main(){
 						second_base++;
 						first_base--;
 					}
-					
 					first_base++;
 					printf("1루타입니다\n");
 					strike_reset();
 				}
 				else if (random_for_fullswing >= 65 && random_for_fullswing < 85) {
+					if (third_base == 1){
+						score++;
+						third_base--;
+					}
+					if (second_base == 1){
+						score++;
+						second_base--;
+					}
+					if (first_base == 1){
+						third_base++;
+						first_base--;
+					}
 					second_base++;
 					printf("2루타입니다!\n");
 					strike_reset();
 				}
 				else if (random_for_fullswing >= 85 && random_for_fullswing < 95){
+					if (third_base == 1){
+						score++;
+						third_base--;
+					}
+					if (second_base == 1){
+						score++;
+						second_base--;
+					}
+					if (first_base == 1){
+						score++;
+						first_base--;
+					}
 					third_base++;
 					printf("3루타입니다!\n");
 				}
@@ -95,19 +103,54 @@ int main(){
 				random_for_swing = rand() % 100;
 				if (random_for_swing < 30) out++;
 				else if (random_for_swing >= 30 && random_for_swing < 65) {
+					if (third_base == 1){
+						score++;
+						third_base--;
+					}
+					if (second_base == 1){
+						third_base++;
+						second_base--;
+					}
+					if (first_base == 1){
+						second_base++;
+						first_base--;
+					}
 					first_base++;
-					printf("1루타입니다!\n");
+					printf("1루타입니다\n");
 					strike_reset();
 				}
 				else if (random_for_swing >= 65 && random_for_swing < 85) {
+					if (third_base == 1){
+						score++;
+						third_base--;
+					}
+					if (second_base == 1){
+						score++;
+						second_base--;
+					}
+					if (first_base == 1){
+						third_base++;
+						first_base--;
+					}
 					second_base++;
 					printf("2루타입니다!\n");
 					strike_reset();
 				}
 				else if (random_for_swing >= 85 && random_for_swing < 95) {
+					if (third_base == 1){
+						score++;
+						third_base--;
+					}
+					if (second_base == 1){
+						score++;
+						second_base--;
+					}
+					if (first_base == 1){
+						score++;
+						first_base--;
+					}
 					third_base++;
 					printf("3루타입니다!\n");
-					strike_reset();
 				}
 				else {
 					score += (first_base + second_base + third_base + 1);
@@ -144,19 +187,54 @@ int main(){
 				random_for_fullswing = rand() % 100;
 				if (random_for_fullswing < 30) out++;
 				else if (random_for_fullswing >= 30 && random_for_fullswing < 65) {
+					if (third_base == 1){
+						score++;
+						third_base--;
+					}
+					if (second_base == 1){
+						third_base++;
+						second_base--;
+					}
+					if (first_base == 1){
+						second_base++;
+						first_base--;
+					}
 					first_base++;
-					printf("1루타입니다!\n");
+					printf("1루타입니다\n");
 					strike_reset();
 				}
 				else if (random_for_fullswing >= 65 && random_for_fullswing < 85) {
+					if (third_base == 1){
+						score++;
+						third_base--;
+					}
+					if (second_base == 1){
+						score++;
+						second_base--;
+					}
+					if (first_base == 1){
+						third_base++;
+						first_base--;
+					}
 					second_base++;
 					printf("2루타입니다!\n");
 					strike_reset();
 				}
 				else if (random_for_fullswing >= 85 && random_for_fullswing < 95) {
+					if (third_base == 1){
+						score++;
+						third_base--;
+					}
+					if (second_base == 1){
+						score++;
+						second_base--;
+					}
+					if (first_base == 1){
+						score++;
+						first_base--;
+					}
 					third_base++;
 					printf("3루타입니다!\n");
-					strike_reset();
 				}
 				else {
 					score = first_base + second_base + third_base + 1;
@@ -178,19 +256,54 @@ int main(){
 					strike_reset();
 				}
 				else if (random_for_swing >= 30 && random_for_swing < 65) {
+					if (third_base == 1){
+						score++;
+						third_base--;
+					}
+					if (second_base == 1){
+						third_base++;
+						second_base--;
+					}
+					if (first_base == 1){
+						second_base++;
+						first_base--;
+					}
 					first_base++;
-					printf("1루타입니다!\n");
+					printf("1루타입니다\n");
 					strike_reset();
 				}
 				else if (random_for_swing >= 65 && random_for_swing < 85) {
+					if (third_base == 1){
+						score++;
+						third_base--;
+					}
+					if (second_base == 1){
+						score++;
+						second_base--;
+					}
+					if (first_base == 1){
+						third_base++;
+						first_base--;
+					}
 					second_base++;
 					printf("2루타입니다!\n");
 					strike_reset();
 				}
 				else if (random_for_swing >= 85 && random_for_swing < 95){
+					if (third_base == 1){
+						score++;
+						third_base--;
+					}
+					if (second_base == 1){
+						score++;
+						second_base--;
+					}
+					if (first_base == 1){
+						score++;
+						first_base--;
+					}
 					third_base++;
 					printf("3루타입니다!\n");
-					strike_reset();
 				}
 				else {
 					score += (first_base + second_base + third_base + 1);
@@ -224,9 +337,7 @@ int main(){
 			out++;
 			strike_reset();
 			}
-		
-		base_count(first_base, second_base, third_base, score);
-		
+
 		if (out >= 3){
 			printf("삼진아웃! 게임 끝!\n\n\n");
 			break;
