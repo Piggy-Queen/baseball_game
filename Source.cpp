@@ -10,7 +10,10 @@ void strike_reset(){
 }
 
 void base_count(int first_base, int second_base, int third_base, int score){
-	while (first_base > 1) { first_base--; second_base++; };
+	while (first_base > 1) {
+		first_base--; 
+		second_base++; 
+		}
 	while (second_base > 1) { second_base--; third_base++; };
 	while (third_base > 1) { third_base--; score++; };
 }
