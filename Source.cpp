@@ -3,15 +3,75 @@
 #include <stdlib.h>
 #include <time.h>
 int strike, ball;
+int first_base, second_base, third_base;
+int score;
 
 void strike_reset(){
 	strike = 0;
 	ball = 0;
 }
 
+void first_run(){
+	if (third_base == 1){
+		score++;
+		third_base--;
+	}
+	if (second_base == 1){
+		third_base++;
+		second_base--;
+	}
+	if (first_base == 1){
+		second_base++;
+		first_base--;
+	}
+	first_base++;
+	printf("1루타입니다\n");
+	strike_reset();
+}
+
+void second_run(){
+		if (third_base == 1){
+			score++;
+			third_base--;
+		}
+		if (second_base == 1){
+			score++;
+			second_base--;
+		}
+		if (first_base == 1){
+			third_base++;
+			first_base--;
+		}
+		second_base++;
+		printf("2루타입니다!\n");
+		strike_reset();
+}
+
+void home_run(){
+	score += (first_base + second_base + third_base + 1);
+	printf("홈런입니다!!!\n");
+	strike_reset();
+}
+
+void third_run(){
+	if (third_base == 1){
+		score++;
+		third_base--;
+	}
+	if (second_base == 1){
+		score++;
+		second_base--;
+	}
+	if (first_base == 1){
+		score++;
+		first_base--;
+	}
+	third_base++;
+	printf("3루타입니다!\n");
+}
+
 int main(){
-	int out, score;
-	int first_base, second_base, third_base;
+	int out;
 	int hit;
 	ball = 0; 
 	strike = 0; 
@@ -22,6 +82,7 @@ int main(){
 	third_base = 0;
 	
 	srand((unsigned)time(NULL));
+
 	while (1){
 		int random_for_pitcher;
 		printf("============================\n점수: %d\n아웃: %d\n스트라이크/볼: %d/%d\n", score, out, strike, ball);
@@ -29,7 +90,7 @@ int main(){
 		random_for_pitcher = rand() % 100;
 		hit = 0;
 		if (random_for_pitcher <= 70){
-			printf("\n\n투수가 직구를 던집니다.\n타격 방법을 선택하세요.(1.풀스윙 2.스윙 3. 대기)\n");
+			printf("\n\n투수가 직구를 던집니다.\n타격 방법을 선택하세요.(1.풀스윙 2.스윙 3. 대기):");
 			scanf("%d", &hit);
 			int random_for_hitter;
 			random_for_hitter = rand() % 100;
@@ -37,127 +98,33 @@ int main(){
 				int random_for_fullswing;
 				random_for_fullswing = rand() % 100;
 				if (random_for_fullswing < 30) out++;
-				else if (random_for_fullswing >= 30 && random_for_fullswing < 65) {
-					if (third_base == 1){
-						score++;
-						third_base--;
-					}
-					if (second_base == 1){
-						third_base++;
-						second_base--;
-					}
-					if (first_base == 1){
-						second_base++;
-						first_base--;
-					}
-					first_base++;
-					printf("1루타입니다\n");
-					strike_reset();
-				}
-				else if (random_for_fullswing >= 65 && random_for_fullswing < 85) {
-					if (third_base == 1){
-						score++;
-						third_base--;
-					}
-					if (second_base == 1){
-						score++;
-						second_base--;
-					}
-					if (first_base == 1){
-						third_base++;
-						first_base--;
-					}
-					second_base++;
-					printf("2루타입니다!\n");
-					strike_reset();
-				}
-				else if (random_for_fullswing >= 85 && random_for_fullswing < 95){
-					if (third_base == 1){
-						score++;
-						third_base--;
-					}
-					if (second_base == 1){
-						score++;
-						second_base--;
-					}
-					if (first_base == 1){
-						score++;
-						first_base--;
-					}
-					third_base++;
-					printf("3루타입니다!\n");
-				}
-				else {
-					score += (first_base + second_base + third_base + 1);
-					printf("홈런입니다!!!\n");
-					strike_reset();
-				}
-			};
+				else if (random_for_fullswing >= 30 && random_for_fullswing < 65)
+					first_run();
+				else if (random_for_fullswing >= 65 && random_for_fullswing < 85)
+					second_run();
+				else if (random_for_fullswing >= 85 && random_for_fullswing < 95)
+					third_run();
+				else
+					home_run();
+			}
 			if (hit == 1 && random_for_hitter > 80){
 				out++;
 				printf("플라이아웃!\n");
 				strike_reset();
-			};
+			}
 			if (hit == 2 && random_for_hitter <= 65){
 				int random_for_swing;
 				random_for_swing = rand() % 100;
 				if (random_for_swing < 30) out++;
-				else if (random_for_swing >= 30 && random_for_swing < 65) {
-					if (third_base == 1){
-						score++;
-						third_base--;
-					}
-					if (second_base == 1){
-						third_base++;
-						second_base--;
-					}
-					if (first_base == 1){
-						second_base++;
-						first_base--;
-					}
-					first_base++;
-					printf("1루타입니다\n");
-					strike_reset();
-				}
-				else if (random_for_swing >= 65 && random_for_swing < 85) {
-					if (third_base == 1){
-						score++;
-						third_base--;
-					}
-					if (second_base == 1){
-						score++;
-						second_base--;
-					}
-					if (first_base == 1){
-						third_base++;
-						first_base--;
-					}
-					second_base++;
-					printf("2루타입니다!\n");
-					strike_reset();
-				}
-				else if (random_for_swing >= 85 && random_for_swing < 95) {
-					if (third_base == 1){
-						score++;
-						third_base--;
-					}
-					if (second_base == 1){
-						score++;
-						second_base--;
-					}
-					if (first_base == 1){
-						score++;
-						first_base--;
-					}
-					third_base++;
-					printf("3루타입니다!\n");
-				}
-				else {
-					score += (first_base + second_base + third_base + 1);
-					printf("홈런입니다!!!\n");
-					strike_reset();
-				}
-			};
+				else if (random_for_swing >= 30 && random_for_swing < 65)
+					first_run();
+				else if (random_for_swing >= 65 && random_for_swing < 85)
+					second_run();
+				else if (random_for_swing >= 85 && random_for_swing < 95)
+					third_run();
+				else
+					home_run();
+			}
 			if (hit == 2 && random_for_hitter > 65){
 				out++;
 				printf("플라이아웃!\n");
@@ -174,8 +141,8 @@ int main(){
 					ball++;
 					printf("볼!\n");
 				}
-			};
-		};
+			}
+		}
 		if (random_for_pitcher > 70) {
 			hit = 0;
 			printf("\n\n투수가 변화구를 던집니다.\n타격 방법을 선택하세요.(1.풀스윙 2.스윙 3. 대기):");
@@ -186,62 +153,15 @@ int main(){
 				int random_for_fullswing;
 				random_for_fullswing = rand() % 100;
 				if (random_for_fullswing < 30) out++;
-				else if (random_for_fullswing >= 30 && random_for_fullswing < 65) {
-					if (third_base == 1){
-						score++;
-						third_base--;
-					}
-					if (second_base == 1){
-						third_base++;
-						second_base--;
-					}
-					if (first_base == 1){
-						second_base++;
-						first_base--;
-					}
-					first_base++;
-					printf("1루타입니다\n");
-					strike_reset();
-				}
-				else if (random_for_fullswing >= 65 && random_for_fullswing < 85) {
-					if (third_base == 1){
-						score++;
-						third_base--;
-					}
-					if (second_base == 1){
-						score++;
-						second_base--;
-					}
-					if (first_base == 1){
-						third_base++;
-						first_base--;
-					}
-					second_base++;
-					printf("2루타입니다!\n");
-					strike_reset();
-				}
-				else if (random_for_fullswing >= 85 && random_for_fullswing < 95) {
-					if (third_base == 1){
-						score++;
-						third_base--;
-					}
-					if (second_base == 1){
-						score++;
-						second_base--;
-					}
-					if (first_base == 1){
-						score++;
-						first_base--;
-					}
-					third_base++;
-					printf("3루타입니다!\n");
-				}
-				else {
-					score = first_base + second_base + third_base + 1;
-					printf("홈런입니다!!!!\n");
-					strike_reset();
-				}
-			};
+				else if (random_for_fullswing >= 30 && random_for_fullswing < 65)
+					first_run();
+				else if (random_for_fullswing >= 65 && random_for_fullswing < 85)
+					second_run();
+				else if (random_for_fullswing >= 85 && random_for_fullswing < 95)
+					third_run();
+				else
+					home_run();
+			}
 			if (hit == 1 && random_for_hitter > 60){
 				out++;
 				printf("플라이아웃!\n");
@@ -255,62 +175,15 @@ int main(){
 					printf("플라이아웃!\n");
 					strike_reset();
 				}
-				else if (random_for_swing >= 30 && random_for_swing < 65) {
-					if (third_base == 1){
-						score++;
-						third_base--;
-					}
-					if (second_base == 1){
-						third_base++;
-						second_base--;
-					}
-					if (first_base == 1){
-						second_base++;
-						first_base--;
-					}
-					first_base++;
-					printf("1루타입니다\n");
-					strike_reset();
-				}
-				else if (random_for_swing >= 65 && random_for_swing < 85) {
-					if (third_base == 1){
-						score++;
-						third_base--;
-					}
-					if (second_base == 1){
-						score++;
-						second_base--;
-					}
-					if (first_base == 1){
-						third_base++;
-						first_base--;
-					}
-					second_base++;
-					printf("2루타입니다!\n");
-					strike_reset();
-				}
-				else if (random_for_swing >= 85 && random_for_swing < 95){
-					if (third_base == 1){
-						score++;
-						third_base--;
-					}
-					if (second_base == 1){
-						score++;
-						second_base--;
-					}
-					if (first_base == 1){
-						score++;
-						first_base--;
-					}
-					third_base++;
-					printf("3루타입니다!\n");
-				}
-				else {
-					score += (first_base + second_base + third_base + 1);
-					printf("홈런입니다!!!\n");
-					strike_reset();
-				}
-			};
+				else if (random_for_swing >= 30 && random_for_swing < 65)
+					first_run();
+				else if (random_for_swing >= 65 && random_for_swing < 85)
+					second_run();
+				else if (random_for_swing >= 85 && random_for_swing < 95)
+					third_run();
+				else
+					home_run();
+			}
 			if (hit == 2 && random_for_hitter > 70){
 				out++;
 				printf("플라이아웃!\n");
@@ -327,8 +200,8 @@ int main(){
 					ball++;
 					printf("볼!\n");
 				}
-			};
-		};
+			}
+		}
 		if (ball == 4){
 			first_base++;
 			strike_reset();
@@ -341,8 +214,8 @@ int main(){
 		if (out >= 3){
 			printf("삼진아웃! 게임 끝!\n\n\n");
 			break;
-			};
-	};
+			}
+	}
 	system("pause");
 	return 0;
 }
