@@ -27,9 +27,15 @@ void base_count(int first_base, int second_base, int third_base, int score){
 int main(){
 	int ball, strike, out, score;
 	int first_base, second_base, third_base;
-	first_base = 0; second_base = 0; third_base = 0;
-	ball = 0; strike = 0; out = 0; score = 0;
 	int hit;
+	ball = 0; 
+	strike = 0; 
+	out = 0; 
+	score = 0;
+	first_base = 0; 
+	second_base = 0; 
+	third_base = 0;
+	
 	srand((unsigned)time(NULL));
 	while (1){
 		int random_for_pitcher;
