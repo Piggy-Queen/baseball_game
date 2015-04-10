@@ -58,12 +58,12 @@ int main(){
 					strike_reset();
 				}
 				else if (random_for_fullswing >= 65 && random_for_fullswing < 85) {
-					first_base += 2;
+					second_base++;
 					printf("2루타입니다!\n");
 					strike_reset();
 				}
 				else if (random_for_fullswing >= 85 && random_for_fullswing < 95){
-					first_base += 3;
+					third_base++;
 					printf("3루타입니다!\n");
 				}
 				else {
@@ -87,12 +87,12 @@ int main(){
 					strike_reset();
 				}
 				else if (random_for_swing >= 65 && random_for_swing < 85) {
-					first_base += 2;
+					second_base++;
 					printf("2루타입니다!\n");
 					strike_reset();
 				}
 				else if (random_for_swing >= 85 && random_for_swing < 95) {
-					first_base += 3;
+					third_base++;
 					printf("3루타입니다!\n");
 					strike_reset();
 				}
@@ -136,12 +136,12 @@ int main(){
 					strike_reset();
 				}
 				else if (random_for_fullswing >= 65 && random_for_fullswing < 85) {
-					first_base += 2;
+					second_base++;
 					printf("2루타입니다!\n");
 					strike_reset();
 				}
 				else if (random_for_fullswing >= 85 && random_for_fullswing < 95) {
-					first_base += 3, second_base += 2;
+					third_base++;
 					printf("3루타입니다!\n");
 					strike_reset();
 				}
@@ -170,12 +170,12 @@ int main(){
 					strike_reset();
 				}
 				else if (random_for_swing >= 65 && random_for_swing < 85) {
-					first_base += 2;
+					second_base++;
 					printf("2루타입니다!\n");
 					strike_reset();
 				}
 				else if (random_for_swing >= 85 && random_for_swing < 95){
-					first_base += 3;
+					third_base++;
 					printf("3루타입니다!\n");
 					strike_reset();
 				}
