@@ -71,6 +71,9 @@ void third_run(){			//3루타 상황 진루
 
 void home_run(){			//홈런 상황 진루
 	score += (first_base + second_base + third_base + 1);
+	first_base = 0;
+	second_base = 0;
+	third_base = 0;
 	printf("홈런입니다!!!\n");
 	strike_reset();
 }
